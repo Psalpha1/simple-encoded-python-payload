@@ -26,7 +26,7 @@ python client.py
 ```
 
   5. Extra steps (If you just want to encode your own paylaod).
-  make ```file.py``` import encode module & make this line code.
+  make ```file.py``` import encode module & make this line of code.
     
 ```sh
 print(encode.MASTER("""Your payload as <String Format>"""))
