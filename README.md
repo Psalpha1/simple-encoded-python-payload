@@ -4,9 +4,9 @@
 
 # Features
 
-- contain a encode file that can make your own payload undetectable
-- simple and easy to edit script 
-- undetected
+- Contain a encode file that can make your own payload undetectable
+- Simple and easy to edit script 
+- Gain cmd access
 
 ## How does work ?
    1. open ```server.py``` and set your IP_ADDRESS.
