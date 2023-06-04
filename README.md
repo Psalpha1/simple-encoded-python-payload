@@ -6,7 +6,7 @@
 
 - Contain a encode file that can make your own payload undetectable
 - Simple and easy to edit script.
-- Gain command prompt access access.
+- Gain command prompt access.
 - Multi-client support.
 
 ## How does work ?
